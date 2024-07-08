@@ -1,0 +1,6 @@
+--JPA Hibernate
+--Id generation strategies
+    Auto
+    Identity
+    Sequence
+    Table
