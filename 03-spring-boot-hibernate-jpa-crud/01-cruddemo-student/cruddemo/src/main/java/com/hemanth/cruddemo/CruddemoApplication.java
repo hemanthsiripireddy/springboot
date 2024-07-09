@@ -19,7 +19,7 @@ public class CruddemoApplication {
         return runner -> {
           // createStudent(studentDao);
             //createMultipleStudents(studentDao);
-           // readStudent(studentDao);
+            readStudent(studentDao);
         };
     }
 
