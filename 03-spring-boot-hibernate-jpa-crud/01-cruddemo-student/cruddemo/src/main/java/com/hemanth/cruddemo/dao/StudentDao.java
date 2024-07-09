@@ -5,5 +5,7 @@ import com.hemanth.cruddemo.entity.Student;
 public interface StudentDao {
 
 
-    public void save(Student student);
+     void save(Student student);
+
+     Student findById(int id);
 }
