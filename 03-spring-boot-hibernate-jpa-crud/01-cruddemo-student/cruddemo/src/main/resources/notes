@@ -4,3 +4,12 @@
     Identity
     Sequence
     Table
+ --spring.jpa.hibernate.ddl-auto:
+    none: no action will be performed
+    create-only: database tables are only created
+    drop: database tables are dropped
+    create: database tables are dropped followed by database tables creation
+    create-drop: database tables are dropped followed by database tables creation, on application shut-down drop tables
+    validate: validate the database schema
+    update: update the database tables schema
+    --for production application, it is not recommended to table definition  from java code, maintain sql scripts separately and control with flyway
