@@ -2,9 +2,13 @@ package com.hemanth.cruddemo.dao;
 
 import com.hemanth.cruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 @Repository
 public class StudentDaoImpl implements StudentDao{
 
@@ -29,5 +33,20 @@ public class StudentDaoImpl implements StudentDao{
     @Override
     public Student findById(int id) {
         return entityManager.find(Student.class,id);
+    }
+
+    @Override
+    public List<Student> findAll() {
+
+
+        TypedQuery theQuery =entityManager.createQuery("from Student order by lastName desc",Student.class);
+        return theQuery.getResultList();
+    }
+
+    @Override
+    public List<Student> findByLastName(String lastName) {
+        TypedQuery typedQuery=entityManager.createQuery("from Student where lastName=:theData ",Student.class);
+        typedQuery.setParameter("theData",lastName);
+        return typedQuery.getResultList();
     }
 }
