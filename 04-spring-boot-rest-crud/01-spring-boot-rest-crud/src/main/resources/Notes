@@ -1,0 +1,13 @@
+--data binding
+    process of converting JSON to Java Object and Java Object to JSON
+    data binding is also called marshalling/de marshalling serialization / deserialization
+    jackson is used for data binding
+
+ --rest api design
+    use plural name of entity in api url
+    don't use verb in uri, use http methods instead of that
+    POST: /api/employees  - create a new employee
+    GET: /api/employees - Read a list of employees
+    GET: /api/employees/{employeeId} - Read a single employee
+    PUT: /api/employees   - update an existing employee
+    DELETE: /api/employees/{employeeId} - Delete an existing employee
