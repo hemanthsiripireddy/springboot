@@ -1,0 +1,5 @@
+--spring-data-rest
+    spring rest provides basics rest apis for entities
+    rest endpoint is if entity is Employee, api is employees,
+    if we want customized endpoint, we can do it with annotation
+
