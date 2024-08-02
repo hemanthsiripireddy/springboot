@@ -9,7 +9,8 @@ public class UserController {
     @GetMapping("/showMyLoginPage")
     public String showLoginPage(){
 
-        return "login-form";
+        //return "login-form";
+        return "fancy-login";
 
     }
 }

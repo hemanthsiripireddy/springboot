@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>My Application Home Page</title>
@@ -9,6 +10,32 @@
 <h2>Company homepage</h2>
 <hr>
 welcome to my company homepage
+<hr>
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br><br>
+    User: <span sec:authentication="principal.authorities"></span>
+</p>
+<hr>
+
+<div sec:authorize="hasRole('MANAGER')">
+<p>
+    <a th:href="@{/leaders}">Leadership Meeting</a>
+    (only for Manager peeps)
+</p>
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <hr>
+<p>
+    <a th:href="@{/admin}">IT Systems Meeting</a>
+    (only for adming peeps)
+</p>
+</div>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout">
+
+</form>
 
 
 </body>
