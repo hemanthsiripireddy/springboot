@@ -29,10 +29,42 @@ public class CruddemoApplication {
            // createInstructorWithCourses(appDto);
             // findInstructorWithCourses(appDto);
            // findCoursesForInstructorId(appDto);
-            findInstructorWithCoursesJoinFetch(appDto);
+            //findInstructorWithCoursesJoinFetch(appDto);
+         // updateInstructor(appDto);
+            updateCourse(appDto);
 
 
         };
+    }
+
+    private void updateCourse(AppDto appDto) {
+
+        int id=10;
+        System.out.println("findind course by id");
+        Course course= appDto.findCourseById(id);
+        System.out.println("Updating course: ");
+        course.setTitle("Java Awesome course");
+        appDto.updateCourse( course);
+        System.out.println("done");
+    }
+
+    private void updateInstructor(AppDto appDto) {
+
+        int id=1;
+        System.out.println("finding instructor");
+
+        Instructor instructor=appDto.findInstructorByIdJoinFetch(id);
+
+        System.out.println("updating instructor");
+
+        instructor.setLastName("tester");
+
+
+        System.out.println("saving instructor");
+        appDto.updateInstructor(instructor);
+        System.out.println("done");
+
+
     }
 
     private void findInstructorWithCoursesJoinFetch(AppDto appDto) {
