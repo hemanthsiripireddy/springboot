@@ -4,6 +4,7 @@ import com.siripireddy.dto.AppDto;
 import com.siripireddy.entity.Course;
 import com.siripireddy.entity.Instructor;
 import com.siripireddy.entity.InstructorDetail;
+import com.siripireddy.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,21 +22,44 @@ public class CruddemoApplication {
     @Bean
     public CommandLineRunner commandLineRunner(AppDto appDto) {
         return runner -> {
-          //createUser(appDto);
-            //readUser(appDto);
-            //deleteInstrcutor(appDto);
-           // findInstructorDetail(appDto);
-           //deleteInstrcutorDetail(appDto);
-            //createInstructorWithCourses(appDto);
-            // findInstructorWithCourses(appDto);
-           // findCoursesForInstructorId(appDto);
-            //findInstructorWithCoursesJoinFetch(appDto);
-         // updateInstructor(appDto);
-          // updateCourse(appDto);
-            deleteInstructor(appDto);
+         // saveCourseWithReviews(appDto);
+           // getCourseAndReviews(appDto);
+            deleteCourseAndReviews(appDto);
 
 
         };
+    }
+
+    private void deleteCourseAndReviews(AppDto appDto) {
+        int id=10;
+        appDto.deleteCourseById(id);
+        System.out.println("done");
+    }
+
+    private void getCourseAndReviews(AppDto appDto) {
+
+        int id=10;
+        Course course=appDto.findCourseAndReviewsByCourseId(id);
+        System.out.println("Course is ");
+        System.out.println(course);
+        System.out.println("Reviews are ");
+        System.out.println(course.getReviews());
+
+
+    }
+
+    private void saveCourseWithReviews(AppDto appDto) {
+
+        Course course=new Course("DSA Course");
+        course.addReview(new Review("this is awesome course"));
+        course.addReview(new Review("this is super course"));
+        course.addReview(new Review("this is dump course, you are an idiot"));
+        System.out.println("Saving Course with Reviews");
+        appDto.saveCourse(course);
+        System.out.println(course);
+        System.out.println(course.getReviews());
+        System.out.println("done");
+
     }
 
     private void updateCourse(AppDto appDto) {

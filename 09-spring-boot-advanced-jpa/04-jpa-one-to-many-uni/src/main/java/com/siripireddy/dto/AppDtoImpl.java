@@ -95,4 +95,29 @@ public class AppDtoImpl implements AppDto {
         entityManager.merge(course);
 
     }
+
+    @Override
+    @Transactional
+    public void saveCourse(Course course) {
+        entityManager.persist(course);
+    }
+
+    @Override
+    public Course findCourseAndReviewsByCourseId(int id) {
+
+        TypedQuery<Course> query=entityManager.createQuery(
+                " select c from Course c "
+                        +" join fetch c.reviews  where c.id=:data",Course.class
+        );
+        query.setParameter("d",id);
+            return query.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(int id) {
+        Course course =entityManager.find(Course.class,id);
+        entityManager.remove(course);
+
+    }
 }
